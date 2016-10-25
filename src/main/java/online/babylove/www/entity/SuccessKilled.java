@@ -3,21 +3,21 @@ package online.babylove.www.entity;
 import java.util.Date;
 
 /**
- * ³É¹¦ÃëÉ±Ã÷Ï¸
+ * æˆåŠŸç§’æ€æ˜ç»†
  * @author Zhang will
  *
  */
 public class SuccessKilled {
 
 	private long seckillId;
-	
+
 	private long userPhone;
-	
+
 	private short state;
-	
+
 	private Date createTime;
-	
-	//±äÍ¨ ¶à¶ÔÒ»
+
+	//å˜é€š å¤šå¯¹ä¸€
 	private Seckill seckill;
 
 	public long getSeckillId() {
@@ -51,7 +51,7 @@ public class SuccessKilled {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
-	
+
 	public Seckill getSeckill() {
 		return seckill;
 	}

@@ -22,22 +22,22 @@ import online.babylove.www.exception.SeckillCloseException;
 import online.babylove.www.exception.SeckillException;
 import online.babylove.www.service.SeckillService;
 
-/** 
+/**
  * @author  zhang will 
- * @date created by£º2016-10-19 09:35
+ * @date created byï¼š2016-10-19 09:35
  */
 @Service
 public class SeckillServiceImpl implements SeckillService{
-	
+
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	
+
 	@Autowired
 	private SeckillDao seckillDao;
-	
+
 	@Autowired
 	private SuccessKilledDao successKilledDao;
-	
-	//md5ÑÎÖµ×Ö·û´®£¬ÓÃÓÚ»ìÏımd5
+
+	//md5ç›å€¼å­—ç¬¦ä¸²ï¼Œç”¨äºæ··æ·†md5
 	private final String slat = "dkelwle*#lkjd3@#kdaELKJSkw*AS8@#";
 
 	public List<Seckill> getSeckills() {
@@ -55,21 +55,21 @@ public class SeckillServiceImpl implements SeckillService{
 		}
 		Date startTime = seckill.getStartTime();
 		Date endTime = seckill.getEndTime();
-		//ÏµÍ³µ±Ç°Ê±¼ä
+		//ç³»ç»Ÿå½“å‰æ—¶é—´
 		Date nowTime = new Date();
 		if(nowTime.getTime() < startTime.getTime() || nowTime.getTime() > endTime.getTime()){
 			return new Exposer(false, nowTime.getTime(), startTime.getTime(), endTime.getTime(), seckillId);
 		}
-		//×ª·¢ÌØ¶¨×Ö·û´®µÄ¹ı³Ì£¬²»¿ÉÄæ
+		//è½¬å‘ç‰¹å®šå­—ç¬¦ä¸²çš„è¿‡ç¨‹ï¼Œä¸å¯é€†
 		String md5 = getMD5(seckillId);
 		return new Exposer(true, md5, seckillId);
 	}
-	
+
 	/**
-	 * Ê¹ÓÃ×¢½â¿ØÖÆÊÂÎñ·½·¨µÄÓÅµã
-	 * 1.¿ª·¢ÍÅ¶Ó´ï³ÉÒ»ÖÂÔ¼¶¨£¬Ã÷È·±ê×¢ÊÂÎñ·½·¨±à³Ì·ç¸ñ
-	 * 2.±£Ö¤ÊÂÎñ·½·¨µÄÖ´ĞĞÊ±¼ä¾¡¿ÉÄÜ¶Ì£¬²»Òª´©²åÆäËûµÄÍøÂç²Ù×÷£¨rpc/httpÇëÇó»òÕß°şÀëµ½ÊÂÎñ·½·¨Íâ²¿)
-	 * 3.²»ÊÇËùÓĞµÄ·½·¨¶¼ĞèÒªÊÂÎñ£¬ÈçÖ»ÓĞÒ»Ìõio²Ù×÷»òÕßÖ»¶Á²Ù×÷
+	 * ä½¿ç”¨æ³¨è§£æ§åˆ¶äº‹åŠ¡æ–¹æ³•çš„ä¼˜ç‚¹
+	 * 1.å¼€å‘å›¢é˜Ÿè¾¾æˆä¸€è‡´çº¦å®šï¼Œæ˜ç¡®æ ‡æ³¨äº‹åŠ¡æ–¹æ³•ç¼–ç¨‹é£æ ¼
+	 * 2.ä¿è¯äº‹åŠ¡æ–¹æ³•çš„æ‰§è¡Œæ—¶é—´å°½å¯èƒ½çŸ­ï¼Œä¸è¦ç©¿æ’å…¶ä»–çš„ç½‘ç»œæ“ä½œï¼ˆrpc/httpè¯·æ±‚æˆ–è€…å‰¥ç¦»åˆ°äº‹åŠ¡æ–¹æ³•å¤–éƒ¨)
+	 * 3.ä¸æ˜¯æ‰€æœ‰çš„æ–¹æ³•éƒ½éœ€è¦äº‹åŠ¡ï¼Œå¦‚åªæœ‰ä¸€æ¡ioæ“ä½œæˆ–è€…åªè¯»æ“ä½œ
 	 */
 	@Transactional
 	public SeckillExecution executeSeckill(long seckillId, long userPhone, String md5)
@@ -77,26 +77,26 @@ public class SeckillServiceImpl implements SeckillService{
 		if(md5 == null || !md5.equals(getMD5(seckillId))){
 			throw new SeckillException("seckill data rewrite");
 		}
-		//Ö´ĞĞÃëÉ±Âß¼­
+		//æ‰§è¡Œç§’æ€é€»è¾‘
 		Date nowTime = new Date();
 		try {
-			//¼õ¿â´æ
+			//å‡åº“å­˜
 			int updateCount = seckillDao.reduceNumber(seckillId, nowTime);
 			if (updateCount <= 0) {
-				//¼õ¿â´æÃ»ÓĞ³É¹¦£¬Ã»ÓĞ¿â´æ»òÕßÃëÉ±ÒÑ¾­½áÊø
+				//å‡åº“å­˜æ²¡æœ‰æˆåŠŸï¼Œæ²¡æœ‰åº“å­˜æˆ–è€…ç§’æ€å·²ç»ç»“æŸ
 				throw new SeckillCloseException("seckill is closed");
 			} else {
-				//¼ÇÂ¼¹ºÂòĞĞÎª
+				//è®°å½•è´­ä¹°è¡Œä¸º
 				int insertCount = successKilledDao.insertSuccessKilled(seckillId, userPhone);
 				if(insertCount <= 0){
-					//ÖØ¸´ÃëÉ±
+					//é‡å¤ç§’æ€
 					throw new RepeatKillException("seckill repeated");
 				}else{
-					//ÃëÉ±³É¹¦
+					//ç§’æ€æˆåŠŸ
 					SuccessKilled successKilled = successKilledDao.queryByIdWithSeckill(seckillId, userPhone);
 					return new SeckillExecution(seckillId, SeckillStateEnum.SUCCESS, successKilled);
 				}
-				
+
 			}
 		} catch (SeckillCloseException sce) {
 			throw sce;
@@ -104,13 +104,13 @@ public class SeckillServiceImpl implements SeckillService{
 			throw rke;
 		}catch (Exception e) {
 			logger.error(e.getMessage(), e);
-			//ËùÓĞ±àÒëÆÚÒì³£ ×ª»¯ÎªÔËĞĞÆÚÒì³£
+			//æ‰€æœ‰ç¼–è¯‘æœŸå¼‚å¸¸ è½¬åŒ–ä¸ºè¿è¡ŒæœŸå¼‚å¸¸
 			throw new SeckillException("seckill error:" + e.getMessage());
 		}
 	}
-	
+
 	/**
-	 * Éú³Émd5Öµ
+	 * ç”Ÿæˆmd5å€¼
 	 * @param seckillId
 	 * @return
 	 */

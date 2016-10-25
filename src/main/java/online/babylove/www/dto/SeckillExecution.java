@@ -3,25 +3,25 @@ package online.babylove.www.dto;
 import online.babylove.www.entity.SuccessKilled;
 import online.babylove.www.enums.SeckillStateEnum;
 
-/** 
- * ·â×°ÃëÉ±Ö´ĞĞºó½á¹û
- * @author  zhang will 
- * @date created by£º2016-10-19 09:01
+/**
+ * å°è£…ç§’æ€æ‰§è¡Œåç»“æœ
+ * @author  zhang will
+ * @date created byï¼š2016-10-19 09:01
  */
 public class SeckillExecution {
-	
-	//ÃëÉ±id
+
+	//ç§’æ€id
 	private long seckillId;
-	
-	//ÃëÉ±Ö´ĞĞ½á¹û×´Ì¬
+
+	//ç§’æ€æ‰§è¡Œç»“æœçŠ¶æ€
 	private int state;
-	
-	//ÃëÉ±Ö´ĞĞ½á¹û×´Ì¬ÃèÊö
+
+	//ç§’æ€æ‰§è¡Œç»“æœçŠ¶æ€æè¿°
 	private String stateInfo;
-	
-	//ÃëÉ±³É¹¦¶ÔÏó
+
+	//ç§’æ€æˆåŠŸå¯¹è±¡
 	private SuccessKilled successKilled;
-	
+
 	public SeckillExecution(long seckillId, SeckillStateEnum stateEnum) {
 		super();
 		this.seckillId = seckillId;

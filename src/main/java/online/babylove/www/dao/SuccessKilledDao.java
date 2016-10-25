@@ -11,15 +11,15 @@ import online.babylove.www.entity.SuccessKilled;
 public interface SuccessKilledDao {
 
 	/**
-	 * ²åÈë¹ºÂòÃ÷Ï¸,¿É¹ıÂËÖØ¸´
+	 * æ’å…¥è´­ä¹°æ˜ç»†,å¯è¿‡æ»¤é‡å¤
 	 * @param seckillId
 	 * @param userPhone
-	 * @return ²åÈëµÄĞĞÊı
+	 * @return æ’å…¥çš„è¡Œæ•°
 	 */
 	int insertSuccessKilled(@Param("seckillId")long seckillId, @Param("userPhone")long userPhone);
-	
+
 	/**
-	 * ¸ù¾İid²éÑ¯SuccessKilled²¢Ğ¯´øÃëÉ±²úÆ·¶ÔÏó
+	 * æ ¹æ®idæŸ¥è¯¢SuccessKilledå¹¶æºå¸¦ç§’æ€äº§å“å¯¹è±¡
 	 * @param seckillId
 	 * @return
 	 */
