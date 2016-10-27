@@ -1,9 +1,6 @@
 package online.babylove.www.service;
 
 import java.util.List;
-
-import org.springframework.stereotype.Service;
-
 import online.babylove.www.dto.Exposer;
 import online.babylove.www.dto.SeckillExecution;
 import online.babylove.www.entity.Seckill;
