@@ -1,12 +1,12 @@
 package online.babylove.www.exception;
 
-/** 
- * ÖØ¸´ÃëÉ±Òì³££¨ÔËĞĞÆÚÒì³££©
- * @author  zhang will 
- * @date created by£º2016-10-19 09:05
+/**
+ * é‡å¤ç§’æ€å¼‚å¸¸ï¼ˆè¿è¡ŒæœŸå¼‚å¸¸ï¼‰
+ * @author  zhang will
+ * @date created byï¼š2016-10-19 09:05
  */
 public class RepeatKillException extends SeckillException {
-	
+
 	private static final long serialVersionUID = 1050352234385512006L;
 
 	public RepeatKillException(String message) {

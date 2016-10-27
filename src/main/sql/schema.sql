@@ -1,41 +1,41 @@
--- ´´½¨Êı¾İ¿â½Å±¾
+-- åˆ›å»ºæ•°æ®åº“è„šæœ¬
 
---´´½¨Êı¾İ¿â
+-- åˆ›å»ºæ•°æ®åº“
 create database seckill;
---Ê¹ÓÃÊı¾İ¿â
+-- ä½¿ç”¨æ•°æ®åº“
 use seckill;
---´´½¨ÃëÉ±¿â´æ±í
+-- åˆ›å»ºç§’æ€åº“å­˜è¡¨
 create table seckill(
-	seckill_id bigint unsigned not null auto_increment comment 'ÉÌÆ·¿â´æid',
-	name varchar(120) not null comment 'ÉÌÆ·Ãû³Æ',
-	number int unsigned not null comment '¿â´æÊıÁ¿',
-	start_time timestamp not null comment 'ÃèÊö¿ªÊ¼Ê±¼ä',
-	end_time timestamp not null comment 'ÃëÉ±½áÊøÊ±¼ä',
-	create_time timestamp not null default current_timestamp comment '´´½¨Ê±¼ä',
+	seckill_id bigint unsigned not null auto_increment comment 'å•†å“åº“å­˜id',
+	name varchar(120) not null comment 'å•†å“åç§°',
+	number int unsigned not null comment 'åº“å­˜æ•°é‡',
+	start_time timestamp not null comment 'æè¿°å¼€å§‹æ—¶é—´',
+	end_time timestamp not null comment 'ç§’æ€ç»“æŸæ—¶é—´',
+	create_time timestamp not null default current_timestamp comment 'åˆ›å»ºæ—¶é—´',
 	primary key (seckill_id),
 	key idx_start_time(start_time),
 	key idx_end_time(end_time),
 	key idx_create_time(create_time)
-)engine=InnoDB auto_increment=1000 default charset=utf8 comment='ÃëÉ±¿â´æ±í';
+)engine=InnoDB auto_increment=1000 default charset=utf8 comment='ç§’æ€åº“å­˜è¡¨';
 
--- ³õÊ¼»¯Êı¾İ
+-- åˆå§‹åŒ–æ•°æ®
 insert into seckill(name,number,start_time,end_time)
 values
-('1000ÔªÃëÉ±iphone7',100,'2016-10-01 00:00:00','2016-10-07 00:00:00'),
-('400ÔªÃëÉ±ipad mini',200,'2016-10-01 00:00:00','2016-10-07 00:00:00'),
-('200ÔªÃëÉ±mac book pro',300,'2016-10-01 00:00:00','2016-10-07 00:00:00'),
-('1ÔªÃëÉ±iphone7 plus',400,'2016-10-01 00:00:00','2016-10-07 00:00:00');
+	('1000å…ƒç§’æ€iphone7',100,'2016-10-01 00:00:00','2016-10-07 00:00:00'),
+	('400å…ƒç§’æ€ipad mini',200,'2016-10-01 00:00:00','2016-10-07 00:00:00'),
+	('200å…ƒç§’æ€mac book pro',300,'2016-10-01 00:00:00','2016-10-07 00:00:00'),
+	('1å…ƒç§’æ€iphone7 plus',400,'2016-10-01 00:00:00','2016-10-07 00:00:00');
 
---ÃëÉ±³É¹¦Ã÷Ï¸±í
---ÓÃ»§µÇÂ¼ÈÏÖ¤Ïà¹ØµÄĞÅÏ¢
+-- ç§’æ€æˆåŠŸæ˜ç»†è¡¨
+-- ç”¨æˆ·ç™»å½•è®¤è¯ç›¸å…³çš„ä¿¡æ¯
 create table success_killed(
-seckill_id bigint unsigned not null comment 'ÃëÉ±ÉÌÆ·id',
-user_phone bigint unsigned not null comment 'ÓÃ»§ÊÖ»úºÅ',
-state tinyint unsigned not null comment '×´Ì¬±êÊ¶£º-1£ºÎŞĞ§ 1£º³É¹¦',
-create_time timestamp not null comment '´´½¨Ê±¼ä',
-primary key(seckill_id,user_phone),/*ÁªºÏÖ÷¼ü*/
-key idx_create_time(create_time)
-)engine=InnoDB default charset=utf8 comment='ÃëÉ±³É¹¦Ã÷Ï¸±í';
+	seckill_id bigint unsigned not null comment 'ç§’æ€å•†å“id',
+	user_phone bigint unsigned not null comment 'ç”¨æˆ·æ‰‹æœºå·',
+	state tinyint unsigned not null comment 'çŠ¶æ€æ ‡è¯†ï¼š-1ï¼šæ— æ•ˆ 1ï¼šæˆåŠŸ',
+	create_time timestamp not null comment 'åˆ›å»ºæ—¶é—´',
+	primary key(seckill_id,user_phone),/*è”åˆä¸»é”®*/
+	key idx_create_time(create_time)
+)engine=InnoDB default charset=utf8 comment='ç§’æ€æˆåŠŸæ˜ç»†è¡¨';
 
 
 

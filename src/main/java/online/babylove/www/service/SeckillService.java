@@ -8,38 +8,38 @@ import online.babylove.www.exception.RepeatKillException;
 import online.babylove.www.exception.SeckillException;
 
 /**
- * ҵ��ӿ�
+ * 业务接口
  * @author Zhang will
  *
  */
 public interface SeckillService {
-	
+
 	/**
-	 * ��ѯ������ɱ
+	 * 查询所有秒杀
 	 * @return
 	 */
 	List<Seckill> getSeckills();
-	
+
 	/**
-	 * ��ѯ������ɱ
+	 * 查询单个秒杀
 	 * @param seckillId
 	 * @return
 	 */
 	Seckill getById(long seckillId);
-	
+
 	/**
-	 * ��ɱ����ʱ�����ɱ�ӿڵ�ַ���������ϵͳʱ�����ɱʱ��
-	 * Ԥ���û�Ԥ���ͨ������ƴ�ӳ���ɱ��ַ����ɱ��ʼǰ��˭����֪����ɱ��ַ
+	 * 秒杀开启时输出秒杀接口地址，否则输出系统时间和秒杀时间
+	 * 预防用户预测或通过规则拼接出秒杀地址，秒杀开始前，谁都不知道秒杀地址
 	 * @param seckillId
 	 */
 	Exposer exportSeckillUrl(long seckillId);
-	
+
 	/**
-	 * ִ����ɱ
+	 * 执行秒杀
 	 * @param seckillId
 	 * @param userPhone
 	 * @param md5
 	 */
 	SeckillExecution executeSeckill(long seckillId, long userPhone, String md5)
-		throws SeckillException, RepeatKillException, SeckillException;
+			throws SeckillException, RepeatKillException, SeckillException;
 }

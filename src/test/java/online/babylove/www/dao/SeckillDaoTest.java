@@ -2,8 +2,6 @@ package online.babylove.www.dao;
 
 import java.util.Date;
 import java.util.List;
-import javax.annotation.Resource;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,35 +11,35 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import online.babylove.www.entity.Seckill;
 
 /**
- * ÅäÖÃSpringºÍJunitÕûºÏ,junitÆô¶¯Ê±¼ÓÔØspring iocÈİÆ÷
- * ²¢ÇÒ¸æËßjunit springÅäÖÃÎÄ¼şÂ·¾¶
+ * é…ç½®Springå’ŒJunitæ•´åˆ,junitå¯åŠ¨æ—¶åŠ è½½spring iocå®¹å™¨
+ * å¹¶ä¸”å‘Šè¯‰junit springé…ç½®æ–‡ä»¶è·¯å¾„
  * @author Zhang will
  *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:spring/spring-dao.xml"})
 public class SeckillDaoTest {
-	
-	//×¢ÈëDaoÊµÏÖÀà
+
+	//æ³¨å…¥Daoå®ç°ç±»
 	@Autowired
 	private SeckillDao seckillDao;
-	
+
 	@Test
 	public void testReduceNumber() throws Exception {
 		Date killTime = new Date();
 		int updateCount = seckillDao.reduceNumber(1000, killTime);
 		System.out.println(updateCount);
-		//Èç¹ûÔËĞĞ²»Í¨¹ı£¬¾ÍÊÇÃëÉ±Ê±¼ä²»·ûºÏ£¬ĞèÒªĞŞ¸ÄÊı¾İ¿âµÄÃëÉ±Ê±¼ä
+		//å¦‚æœè¿è¡Œä¸é€šè¿‡ï¼Œå°±æ˜¯ç§’æ€æ—¶é—´ä¸ç¬¦åˆï¼Œéœ€è¦ä¿®æ”¹æ•°æ®åº“çš„ç§’æ€æ—¶é—´
 		//Assert.assertEquals(1, updateCount);
 	}
-	
+
 	@Test
 	public void testQueryById() throws Exception {
 		long id = 1000;
 		Seckill seckill = seckillDao.queryById(id);
 		System.out.println(seckill);
 	}
-	
+
 	@Test
 	public void testQueryAll() throws Exception {
 		List<Seckill> seckills = seckillDao.queryAll(0, 100);

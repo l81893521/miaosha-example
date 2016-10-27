@@ -1,24 +1,24 @@
 package online.babylove.www.dto;
-/** 
- * ±©Â¶ÃëÉ±µØÖ·DTO
- * @author  zhang will 
- * @date created by£º2016-10-19 08:54
+/**
+ * æš´éœ²ç§’æ€åœ°å€DTO
+ * @author  zhang will
+ * @date created byï¼š2016-10-19 08:54
  */
 public class Exposer {
-	
-	//ÃëÉ±ÊÇ·ñ¿ªÆô
+
+	//ç§’æ€æ˜¯å¦å¼€å¯
 	private boolean exposed;
-	//Ò»ÖÖ¼ÓÃÜ´ëÊ©
+	//ä¸€ç§åŠ å¯†æªæ–½
 	private String md5;
-	//ÃëÉ±id
+	//ç§’æ€id
 	private long seckillId;
-	//ÏµÍ³µ±Ç°Ê±¼ä(ºÁÃë)
+	//ç³»ç»Ÿå½“å‰æ—¶é—´(æ¯«ç§’)
 	private long now;
-	//ÃëÉ±¿ªÊ¼Ê±¼ä
+	//ç§’æ€å¼€å§‹æ—¶é—´
 	private long start;
-	//ÃëÉ±½áÊøÊ±¼ä
+	//ç§’æ€ç»“æŸæ—¶é—´
 	private long end;
-	
+
 	public Exposer(boolean exposed, long seckillId) {
 		super();
 		this.exposed = exposed;

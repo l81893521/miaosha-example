@@ -1,14 +1,14 @@
 package online.babylove.www.exception;
 
-/** 
- * ÃëÉ±¹Ø±ÕÒì³£(ÀıÈçÃ»¿â´æ£¬Ê±¼ä¹ıÆÚ£¬ÔËĞĞÊ±Òì³£)
- * @author  zhang will 
- * @date created by£º2016-10-19 09:07
+/**
+ * ç§’æ€å…³é—­å¼‚å¸¸(ä¾‹å¦‚æ²¡åº“å­˜ï¼Œæ—¶é—´è¿‡æœŸï¼Œè¿è¡Œæ—¶å¼‚å¸¸)
+ * @author  zhang will
+ * @date created byï¼š2016-10-19 09:07
  */
 public class SeckillCloseException extends SeckillException{
 
 	private static final long serialVersionUID = 6217115874677044706L;
-	
+
 	public SeckillCloseException(String message) {
 		super(message);
 	}

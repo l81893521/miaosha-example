@@ -11,24 +11,24 @@ import online.babylove.www.entity.Seckill;
  *
  */
 public interface SeckillDao {
-	
+
 	/**
-	 * ¼õ¿â´æ
+	 * å‡åº“å­˜
 	 * @param seckillId
 	 * @param killTime
-	 * @return Èç¹ûÓ°ÏìĞĞÊı>=1,±íÊ¾¸üĞÂµÄ¼ÇÂ¼ĞĞÊı
+	 * @return å¦‚æœå½±å“è¡Œæ•°>=1,è¡¨ç¤ºæ›´æ–°çš„è®°å½•è¡Œæ•°
 	 */
 	int reduceNumber(@Param("seckillId")long seckillId, @Param("killTime")Date killTime);
-	
+
 	/**
-	 * ¸ù¾İid²éÑ¯ÃëÉ±¶ÔÏó
+	 * æ ¹æ®idæŸ¥è¯¢ç§’æ€å¯¹è±¡
 	 * @param seckillId
 	 * @return
 	 */
 	Seckill queryById(long seckillId);
-	
+
 	/**
-	 * ¸ù¾İÆ«ÒÆÁ¿²éÑ¯ÃëÉ±ÉÌÆ·ÁĞ±í
+	 * æ ¹æ®åç§»é‡æŸ¥è¯¢ç§’æ€å•†å“åˆ—è¡¨
 	 * @param offet
 	 * @param limit
 	 * @return

@@ -9,30 +9,30 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import online.babylove.www.entity.SuccessKilled;
 /**
- * ÅäÖÃSpringºÍJunitÕûºÏ,junitÆô¶¯Ê±¼ÓÔØspring iocÈİÆ÷
- * ²¢ÇÒ¸æËßjunit springÅäÖÃÎÄ¼şÂ·¾¶
+ * é…ç½®Springå’ŒJunitæ•´åˆ,junitå¯åŠ¨æ—¶åŠ è½½spring iocå®¹å™¨
+ * å¹¶ä¸”å‘Šè¯‰junit springé…ç½®æ–‡ä»¶è·¯å¾„
  * @author Zhang will
  *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:spring/spring-dao.xml"})
 public class SuccessKilledDaoTest {
-	
+
 	@Autowired
 	private SuccessKilledDao successKilledDao;
-	
+
 	@Test
 	public void testInsertSuccessKilled() throws Exception {
 		long id = 1000l;
 		long userPhone = 13888888888l;
 		int insert = successKilledDao.insertSuccessKilled(id, userPhone);
 		/*
-		 * ÎŞ·¨²åÈëÖØ¸´Êı¾İ£¬Êı¾İ¿âÉèÖÃÁËseckillIdºÍuserPhoneÎª¸´ºÏÖ÷¼ü
-		 * µÚ¶ş´Îµ÷ÓÃ²»»á±¨´íÖ»»á·µ»Ø0£¬ÒòÎªsqlÔö¼ÓÁËignore
+		 * æ— æ³•æ’å…¥é‡å¤æ•°æ®ï¼Œæ•°æ®åº“è®¾ç½®äº†seckillIdå’ŒuserPhoneä¸ºå¤åˆä¸»é”®
+		 * ç¬¬äºŒæ¬¡è°ƒç”¨ä¸ä¼šæŠ¥é”™åªä¼šè¿”å›0ï¼Œå› ä¸ºsqlå¢åŠ äº†ignore
 		 */
 		Assert.assertEquals(1, insert);
 	}
-	
+
 	@Test
 	public void testqueryByIdWithSeckill() throws Exception {
 		long id = 1000l;

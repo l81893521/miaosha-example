@@ -1,19 +1,19 @@
 package online.babylove.www.enums;
 
-/** 
- * ÃëÉ±×´Ì¬Ã¶¾Ù³£Á¿
- * @author  zhang will 
- * @date created by£º2016-10-19 10:03
+/**
+ * ç§’æ€çŠ¶æ€æšä¸¾å¸¸é‡
+ * @author  zhang will
+ * @date created byï¼š2016-10-19 10:03
  */
 public enum SeckillStateEnum {
-	SUCCESS(1,"ÃëÉ±³É¹¦"),
-	END(0,"ÃëÉ±½áÊø"),
-	REPEAT_KILL(-1,"ÖØ¸´ÃëÉ±"),
-	INNER_ERROR(-2,"ÏµÍ³Òì³£"),
-	DATE_REWRITE(-3,"Êı¾İ´Û¸Ä");
-	
+	SUCCESS(1,"ç§’æ€æˆåŠŸ"),
+	END(0,"ç§’æ€ç»“æŸ"),
+	REPEAT_KILL(-1,"é‡å¤ç§’æ€"),
+	INNER_ERROR(-2,"ç³»ç»Ÿå¼‚å¸¸"),
+	DATE_REWRITE(-3,"æ•°æ®ç¯¡æ”¹");
+
 	private int state;
-	
+
 	private String stateInfo;
 
 	private SeckillStateEnum(int state, String stateInfo) {
@@ -28,7 +28,7 @@ public enum SeckillStateEnum {
 	public String getStateInfo() {
 		return stateInfo;
 	}
-	
+
 	public static SeckillStateEnum stateOf(int index){
 		for (SeckillStateEnum seckillStateEnum : values()) {
 			if(seckillStateEnum.getState() == index){

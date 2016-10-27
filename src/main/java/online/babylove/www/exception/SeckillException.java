@@ -1,14 +1,14 @@
 package online.babylove.www.exception;
 
-/** 
- * ÃëÉ±Ïà¹ØÒµÎñÒì³£
- * @author  zhang will 
- * @date created by£º2016-10-19 09:09
+/**
+ * ç§’æ€ç›¸å…³ä¸šåŠ¡å¼‚å¸¸
+ * @author  zhang will
+ * @date created byï¼š2016-10-19 09:09
  */
 public class SeckillException extends RuntimeException{
 
 	private static final long serialVersionUID = 2563150010500756846L;
-	
+
 	public SeckillException(String message) {
 		super(message);
 	}

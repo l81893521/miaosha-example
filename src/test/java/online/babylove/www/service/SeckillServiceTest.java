@@ -15,18 +15,18 @@ import online.babylove.www.entity.Seckill;
 import online.babylove.www.exception.RepeatKillException;
 import online.babylove.www.exception.SeckillCloseException;
 
-/** 
+/**
  * @author  zhang will 
- * @date created by£º2016-10-19 11:20
+ * @date created byï¼š2016-10-19 11:20
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({
 		"classpath:spring/spring-dao.xml",
 		"classpath:spring/spring-service.xml"})
 public class SeckillServiceTest {
-	
+
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	
+
 	@Autowired
 	private SeckillService seckillService;
 
@@ -35,21 +35,21 @@ public class SeckillServiceTest {
 		List<Seckill> seckills = seckillService.getSeckills();
 		logger.info("list={}",seckills);
 	}
-	
+
 	@Test
 	public void testGetById() throws Exception {
 		long seckillId = 1000;
 		Seckill seckill = seckillService.getById(seckillId);
 		logger.info("seckill={}",seckill);
 	}
-	
+
 	@Test
 	public void testSeckillLogic() throws Exception {
 		long seckillId = 1000;
-		//»ñÈ¡ÃëÉ±ĞÅÏ¢
+		//è·å–ç§’æ€ä¿¡æ¯
 		Exposer exposer = seckillService.exportSeckillUrl(seckillId);
 		logger.info("exposer={}",exposer);
-		//Èç¹ûÃëÉ±ÒÑ¾­¿ªÊ¼
+		//å¦‚æœç§’æ€å·²ç»å¼€å§‹
 		if(exposer.isExposed()){
 			long userPhone = 13888888887l;
 			String md5 = exposer.getMd5();

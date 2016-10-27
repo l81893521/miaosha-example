@@ -4,24 +4,24 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * ÃëÉ±¿â´æ±í
+ * ç§’æ€åº“å­˜è¡¨
  * @author Zhang will
  *
  */
 public class Seckill implements Serializable{
-	
+
 	private static final long serialVersionUID = -7644883744727399742L;
 
 	private long seckillId;
-	
+
 	private String name;
-	
+
 	private int number;
-	
+
 	private Date startTime;
-	
+
 	private Date endTime;
-	
+
 	private Date createTime;
 
 	public long getSeckillId() {
