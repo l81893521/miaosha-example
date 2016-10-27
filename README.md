@@ -12,4 +12,11 @@
 
 ### 配置
 * mybatis配置[查看](https://github.com/l81893521/miaosha-example/blob/master/src/main/resources/mybatis-config.xml)
-* 数据源+mybatis整合spring配置[查看](https://github.com/l81893521/miaosha-example/blob/master/src/main/resources/spring/spring-dao.xml)
+* dao相关配置[查看](https://github.com/l81893521/miaosha-example/blob/master/src/main/resources/spring/spring-dao.xml)
+* service相关配置[查看](https://github.com/l81893521/miaosha-example/blob/master/src/main/resources/spring/spring-service.xml)
+
+### 代码
+* 待添加
+
+### 单元测试
+* 待添加
