@@ -30,11 +30,13 @@
 	 <mvc:default-servlet-handler/>
 	 <!-- 3.配置jsp显示 viewResolver -->
 	 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-	 	<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
-	 	<property name="prefix" value="/WEB-INF/jsp"></property>
-	 	<property name="suffix" value=".jsp"></property>
+		 <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+		 <property name="prefix" value="/WEB-INF/jsp/"/>
+		 <property name="suffix" value=".jsp"/>
 	 </bean>
 	 
 	 <!-- 4.扫描web相关的bean -->
-	 <context:component-scan base-package="online.babylove.www.web"></context:component-scan>
+	<context:component-scan base-package="online.babylove.www.web"/>
+	<!-- <import resource="spring-dao.xml"/>
+	<import resource="spring-service.xml"/> -->
 </beans>

@@ -2,7 +2,7 @@
 一个高并发优化的秒杀系统例子
 
 ### 技术架构
-* 待添加
+* 展示层 : jquery, jquery.cookie, jquery.countdown, bootstrap, springMVC
 
 
 ### 数据库
