@@ -8,6 +8,9 @@ var seckill = {
         exposer : function (seckillId) {
             return '/seckill/' + seckillId + '/exposer';
         },
+        exposerByRedis : function (seckillId) {
+            return '/seckill/' + seckillId + '/exposerByRedis';
+        },
         execution : function (seckillId, md5){
             return '/seckill/' + seckillId + '/' + md5 + '/execution';
         }
@@ -24,7 +27,7 @@ var seckill = {
     handleSeckill : function(seckillId, node){
         //处理秒杀逻辑
         node.hide().html('<button class="btn btn-primary btn-lg" id="killBtn">开始秒杀</button>');
-        $.post(seckill.URL.exposer(seckillId), {}, function(result){
+        $.post(seckill.URL.exposerByRedis(seckillId), {}, function(result){
             if(result && result['success']){
                 var exposer = result['data'];
                 //秒杀是否开启

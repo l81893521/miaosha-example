@@ -8,9 +8,7 @@ import java.util.Date;
  * @author Zhang will
  *
  */
-public class Seckill implements Serializable{
-
-	private static final long serialVersionUID = -7644883744727399742L;
+public class Seckill{
 
 	private long seckillId;
 

@@ -1,8 +1,11 @@
-# miaosha-example
-一个高并发优化的秒杀系统例子
+# miaosha-example(高并发秒杀系统列子)
 
 ### 技术架构
 * 展示层 : jquery, jquery.cookie, jquery.countdown, bootstrap, springMVC
+* 持久层 : mybatis
+* 数据库 : mysql
+* 缓存 : redis
+* IOC : spring
 
 
 ### 数据库

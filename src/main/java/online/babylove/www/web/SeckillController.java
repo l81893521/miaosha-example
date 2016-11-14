@@ -85,6 +85,26 @@ public class SeckillController {
     }
 
     /**
+     * 经过redis优化
+     * 秒杀暴露接口
+     * @param seckillId
+     * @return
+     */
+    @RequestMapping(value = "/{seckillId}/exposerByRedis", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public SeckillResult<Exposer> exposerByRedis(@PathVariable("seckillId") Long seckillId){
+        SeckillResult<Exposer> result;
+        try {
+            Exposer exposer = seckillService.exportSeckillUrlByRedis(seckillId);
+            result = new SeckillResult<Exposer>(true, exposer);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            result = new SeckillResult<Exposer>(false, e.getMessage());
+        }
+        return result;
+    }
+
+    /**
      * 执行秒杀
      * @return
      */
@@ -97,7 +117,12 @@ public class SeckillController {
         }
         SeckillResult<SeckillExecution> result;
         try {
-            SeckillExecution seckillExecution = seckillService.executeSeckill(seckillId, phone, md5);
+            //旧方法(本机测试每秒处理次数大概125/s)
+            //SeckillExecution seckillExecution = seckillService.executeSeckill(seckillId, phone, md5);
+            //第一次优化(本机测试每秒处理次数大概126/s)
+            //SeckillExecution seckillExecution = seckillService.executeSeckillNew(seckillId, phone, md5);
+            //第二次优化
+            SeckillExecution seckillExecution = seckillService.executeSeckillByProcedure(seckillId, phone, md5);
             return  new SeckillResult<SeckillExecution>(true, seckillExecution);
         }catch (RepeatKillException rke) {
             logger.error(rke.getMessage(), rke);

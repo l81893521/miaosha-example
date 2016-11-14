@@ -35,11 +35,36 @@ public interface SeckillService {
 	Exposer exportSeckillUrl(long seckillId);
 
 	/**
+	 * 秒杀开启时输出秒杀接口地址，否则输出系统时间和秒杀时间
+	 * 预防用户预测或通过规则拼接出秒杀地址，秒杀开始前，谁都不知道秒杀地址
+	 * @param seckillId
+	 */
+	Exposer exportSeckillUrlByRedis(long seckillId);
+
+	/**
 	 * 执行秒杀
 	 * @param seckillId
 	 * @param userPhone
 	 * @param md5
 	 */
 	SeckillExecution executeSeckill(long seckillId, long userPhone, String md5)
+			throws SeckillException, RepeatKillException, SeckillException;
+
+	/**
+	 * 执行秒杀(第一次优化)
+	 * @param seckillId
+	 * @param userPhone
+	 * @param md5
+	 */
+	SeckillExecution executeSeckillNew(long seckillId, long userPhone, String md5)
+			throws SeckillException, RepeatKillException, SeckillException;
+
+	/**
+	 * 执行秒杀(第二次优化)
+	 * @param seckillId
+	 * @param userPhone
+	 * @param md5
+	 */
+	SeckillExecution executeSeckillByProcedure(long seckillId, long userPhone, String md5)
 			throws SeckillException, RepeatKillException, SeckillException;
 }
