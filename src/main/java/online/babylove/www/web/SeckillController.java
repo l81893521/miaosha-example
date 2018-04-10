@@ -117,11 +117,11 @@ public class SeckillController {
         }
         SeckillResult<SeckillExecution> result;
         try {
-            //旧方法(本机测试每秒处理次数大概125/s)
+            //旧方法(本机qps大概 950/s)
             //SeckillExecution seckillExecution = seckillService.executeSeckill(seckillId, phone, md5);
-            //第一次优化(本机测试每秒处理次数大概126/s)
+            //第一次优化(本机qps大概 1050/s)
             //SeckillExecution seckillExecution = seckillService.executeSeckillNew(seckillId, phone, md5);
-            //第二次优化
+            //第二次优化(本机qps大概1400/s)
             SeckillExecution seckillExecution = seckillService.executeSeckillByProcedure(seckillId, phone, md5);
             return  new SeckillResult<SeckillExecution>(true, seckillExecution);
         }catch (RepeatKillException rke) {

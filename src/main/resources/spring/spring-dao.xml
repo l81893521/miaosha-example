@@ -12,22 +12,44 @@
 	<context:property-placeholder location="classpath:jdbc.properties"/>
 	
 	<!-- 2.数据库连接池 -->
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="driverClass" value="${driver}"/>
-		<property name="jdbcUrl" value="${url}"/>
-		<property name="user" value="${jdbc.username}"/>
-		<property name="password" value="${jdbc.pasword}"/>
-		
-		<!-- 连接词私有属性 -->
-		<property name="maxPoolSize" value="30"/>
-		<property name="minPoolSize" value="10"/>
-		<!-- 关闭连接后不自动commit,默认也是false -->
-		<property name="autoCommitOnClose" value="false"/>
-		<!-- 获取连接超时时间 -->
-		<property name="checkoutTimeout" value="1000"/>
-		<!-- 获取连接失败重试次数 -->
-		<property name="acquireRetryAttempts" value="2"/>
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+		<property name="url" value="${url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.pasword}" />
+
+		<property name="filters" value="stat" />
+
+		<property name="maxActive" value="15000" />
+		<property name="initialSize" value="1" />
+		<property name="maxWait" value="60000" />
+		<property name="minIdle" value="1" />
+
+		<property name="timeBetweenEvictionRunsMillis" value="60000" />
+		<property name="minEvictableIdleTimeMillis" value="300000" />
+
+		<property name="testWhileIdle" value="true" />
+		<property name="testOnBorrow" value="false" />
+		<property name="testOnReturn" value="false" />
+
+		<property name="poolPreparedStatements" value="false" />
+		<property name="maxOpenPreparedStatements" value="20" />
 	</bean>
+	<!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
+		<!--<property name="driverClass" value="${driver}"/>-->
+		<!--<property name="jdbcUrl" value="${url}"/>-->
+		<!--<property name="user" value="${jdbc.username}"/>-->
+		<!--<property name="password" value="${jdbc.pasword}"/>-->
+		<!---->
+		<!--&lt;!&ndash; 连接词私有属性 &ndash;&gt;-->
+		<!--<property name="maxPoolSize" value="100"/>-->
+		<!--<property name="minPoolSize" value="10"/>-->
+		<!--&lt;!&ndash; 关闭连接后不自动commit,默认也是false &ndash;&gt;-->
+		<!--<property name="autoCommitOnClose" value="false"/>-->
+		<!--&lt;!&ndash; 获取连接超时时间 &ndash;&gt;-->
+		<!--<property name="checkoutTimeout" value="0"/>-->
+		<!--&lt;!&ndash; 获取连接失败重试次数 &ndash;&gt;-->
+		<!--<property name="acquireRetryAttempts" value="2"/>-->
+	<!--</bean>-->
 	
 	<!-- 3:配置sessionFactory对象 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
